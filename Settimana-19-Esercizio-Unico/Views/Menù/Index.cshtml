@@ -1,0 +1,47 @@
+﻿@model List<Settimana_19_Esercizio_Unico.Models.Articoli>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h3 class="display-5">Menù</h3>
+
+@if (TempData.ContainsKey("Info"))
+{
+    <div class="alert alert-info">
+        @TempData["Info"]
+    </div>
+}
+@if (!User.Identity.IsAuthenticated)
+{
+    <div class="alert alert-warning">
+        Per accedere al carrello è necessario il login
+    </div>
+}
+
+<div>
+    @foreach (Settimana_19_Esercizio_Unico.Models.Articoli a in Model)
+    {
+        <div class="row align-items-center rounded-4 border mt-2 p-4">
+            <div class="col-2">
+                <img class="img-fluid" src="~/ImmaginiProdotti/@a.Foto" alt="Immagine prodotto" />
+            </div>
+            <div class="col-6">
+                <p class="fs-3 fw-light">@a.Nome</p>
+                <p>@a.Ingredienti</p>
+                <p class="text-end fs-5 fw-lighter">@Convert.ToDouble(a.Prezzo) €</p>
+            </div>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <div class="col-4">
+                    <form method="post" action="@Url.Action("AggiungiAlCarrello", "Carrello")">
+                        <input type="hidden" name="idArticolo" value="@a.IdArticolo" />
+                        <label for="quantity" class="control-label">Quantità:</label>
+                        <input type="number" name="quantità" value="1" min="1" class="w-25 mb-3 form-control" />
+                        <input type="submit" value="Aggiungi al carrello" class="btn btn-outline-success" />
+                    </form>
+                </div>
+            }
+        </div>
+    }
+</div>
+

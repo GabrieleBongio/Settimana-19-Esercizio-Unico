@@ -1,0 +1,91 @@
+﻿@model List<Settimana_19_Esercizio_Unico.Models.ElementoCarrello>
+@{
+    ViewBag.Title = "Index";
+    TimeSpan tempoConsegna = new TimeSpan(0, 0, 0);
+    decimal PrezzoTotale = 0;
+    int TotaleArticoli = 0;
+}
+
+<h3 class="display-6">Carrello:</h3>
+
+@if (TempData.ContainsKey("Info"))
+{
+    <div class="alert alert-info">
+        @TempData["Info"]
+    </div>
+}
+
+<div>
+    @foreach (Settimana_19_Esercizio_Unico.Models.ElementoCarrello c in Model)
+    {
+        if (c.Articolo.TempoConsegna > tempoConsegna) { tempoConsegna = c.Articolo.TempoConsegna; }
+        PrezzoTotale += c.Articolo.Prezzo * c.Quantità;
+        TotaleArticoli += c.Quantità;
+        <div class="row align-items-center rounded-4 border mt-2 p-4">
+            <div class="col-2">
+                <img class="img-fluid" src="~/ImmaginiProdotti/@c.Articolo.Foto" alt="Immagine prodotto" />
+            </div>
+            <div class="col-4">
+                <p class="fs-3 fw-light">@c.Articolo.Nome</p>
+                <p>@c.Articolo.Ingredienti</p>
+            </div>
+            <div class="col-2">
+                <p class="text-center">Quantità:</p>
+                <div class="row g-0 align-items-center">
+                    <div class="col-4 text-end">
+                        <form method="post" action="@Url.Action("RimuoviUno", "Carrello")">
+                            <input type="hidden" name="idArticolo" value="@c.Articolo.IdArticolo" />
+                            <input type="submit" value=" -1 " class="btn btn-outline-dark rounded-pill" />
+                        </form>
+                    </div>
+                    <div class="col-4 text-center">
+                        <p class="fs-5 fw-lighter m-0">@c.Quantità</p>
+                    </div>
+                    <div class="col-4">
+                        <form method="post" action="@Url.Action("AggiungiUno", "Carrello")">
+                            <input type="hidden" name="idArticolo" value="@c.Articolo.IdArticolo" />
+                            <input type="submit" value=" +1 " class="btn btn-outline-dark rounded-pill" />
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-2 text-center">
+                <p>Prezzo:</p>
+
+                <p class="fs-5 fw-lighter">
+                    @{
+                        decimal totale = c.Articolo.Prezzo * c.Quantità;
+                        Write(Convert.ToDouble(totale));
+                    }
+                    €
+                </p>
+            </div>
+            <div class="col-2">
+                <form method="post" action="@Url.Action("Rimuovi", "Carrello")">
+                    <input type="hidden" name="idArticolo" value="@c.Articolo.IdArticolo" />
+                    <input type="submit" value="Rimuovi dal carrello" class="btn btn-outline-danger" />
+                </form>
+            </div>
+        </div>
+    }
+    <div class="row align-items-center rounded-4 border mt-2 p-4">
+        <div class="col-6 text-end">
+            <p class="fs-4 fw-light m-0">Numero Articoli:</p>
+            <p class="fs-4 fw-light m-0">Prezzo Totale:</p>
+            <p class="fs-4 fw-light m-0">Tempo stimato consegna:</p>
+        </div>
+        <div class="col-3">
+            <p class="fs-4 fw-light m-0">@TotaleArticoli</p>
+            <p class="fs-4 fw-light m-0">@Convert.ToDouble(PrezzoTotale) €</p>
+            <p class="fs-4 fw-light m-0">@tempoConsegna.Minutes minuti</p>
+        </div>
+        @if (Model.Count > 0)
+        {
+            <div class="col-3">
+                @Html.ActionLink("Procedi", "DatiPersonali", "Carrello", new { area = "" }, new { @class = "btn btn-success" })
+            </div>
+        }
+    </div>
+</div>
+
+

@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h3 class="display-6">BackOffice</h3>
+
+<div class="row mt-5">
+    <div class="col-3">
+        @Html.ActionLink("Articoli", "Index", "Articoli", new {area = ""}, new {@class = "btn btn-primary"})
+    </div>
+    <div class="col-3">
+        @Html.ActionLink("Ordini", "Index", "Ordini", new { area = "" }, new { @class = "btn btn-primary" })
+    </div>
+    <div class="col-3">
+        @Html.ActionLink("Utenti", "Index", "Utentis", new { area = "" }, new { @class = "btn btn-primary" })
+    </div>
+</div>

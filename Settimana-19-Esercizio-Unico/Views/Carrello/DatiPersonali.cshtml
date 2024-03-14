@@ -1,0 +1,24 @@
+﻿
+@{
+    ViewBag.Title = "DatiPersonali";
+}
+
+<h3>Conferma Ordine</h3>
+
+<p>Inserisci i tuoi dati per confermare l'ordine</p>
+
+<form method="post" action="@Url.Action("ConfermaOrdine", "Carrello")">
+    <div class="form-group">
+        <label class="control-label col-md-2" for="indirizzo">Indirizzo:</label>
+        <div class="col-md-10">
+            <input name="indirizzo" class="form-control" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-2" for="noteUtili">Note Utili:</label>
+        <div class="col-md-10">
+            <input name="noteUtili" class="form-control"/>
+        </div>
+    </div>
+    <input type="submit" value="Conferma ordine" class="btn btn-success"/>
+</form>
