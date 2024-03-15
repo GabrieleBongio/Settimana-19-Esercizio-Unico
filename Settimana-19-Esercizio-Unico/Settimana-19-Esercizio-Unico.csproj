@@ -135,11 +135,20 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MenùController.cs" />
     <Compile Include="Controllers\OrdiniController.cs" />
-    <Compile Include="Controllers\UtentisController.cs" />
+    <Compile Include="Controllers\UtentiController.cs" />
     <Compile Include="Controllers\ValidationController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202403151324362_Initial.cs" />
+    <Compile Include="Migrations\202403151324362_Initial.designer.cs">
+      <DependentUpon>202403151324362_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202403151325264_NuovaColonnaDataInOrdini.cs" />
+    <Compile Include="Migrations\202403151325264_NuovaColonnaDataInOrdini.designer.cs">
+      <DependentUpon>202403151325264_NuovaColonnaDataInOrdini.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Articoli.cs" />
     <Compile Include="Models\Dettagli_Ordini.cs" />
     <Compile Include="Models\ElementoCarrello.cs" />
@@ -169,12 +178,20 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="ImmaginiProdotti\Forno_Storia.jpg" />
     <Content Include="ImmaginiProdotti\Pizza_Burrata.jpeg" />
     <Content Include="ImmaginiProdotti\Pizza_Cotto.jpeg" />
     <Content Include="ImmaginiProdotti\Pizza_Diavola.jpeg" />
     <Content Include="ImmaginiProdotti\Pizza_Inferno.jpeg" />
     <Content Include="ImmaginiProdotti\Pizza_Margherita.jpeg" />
     <Content Include="ImmaginiProdotti\Pizza_Patatine.jpeg" />
+    <Content Include="ImmaginiProdotti\Pizza_Storia.jpg" />
+    <Content Include="ImmaginiProdotti\Pizzeria_Logo.png" />
+    <Content Include="ImmaginiProdotti\Pizzeria_Storia.jpg" />
+    <Content Include="ImmaginiProdotti\Sfondo_Legno.jpg" />
+    <Content Include="ImmaginiProdotti\Sfondo_Legno_II.jpg" />
+    <Content Include="ImmaginiProdotti\Sfondo_Pizzeria.jpg" />
+    <Content Include="ImmaginiProdotti\Sfondo_Principale.jpg" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -212,19 +229,19 @@
     <Content Include="Views\Articoli\Edit.cshtml" />
     <Content Include="Views\Articoli\Index.cshtml" />
     <Content Include="Views\BackOffice\Index.cshtml" />
-    <Content Include="Views\Ordini\Create.cshtml" />
+    <Content Include="Views\Menù\Index.cshtml" />
+    <Content Include="Views\Carrello\Index.cshtml" />
+    <Content Include="Views\Carrello\DatiPersonali.cshtml" />
+    <Content Include="Views\Utenti\Create.cshtml" />
+    <Content Include="Views\Utenti\Delete.cshtml" />
+    <Content Include="Views\Utenti\Details.cshtml" />
+    <Content Include="Views\Utenti\Edit.cshtml" />
+    <Content Include="Views\Utenti\Index.cshtml" />
     <Content Include="Views\Ordini\Delete.cshtml" />
     <Content Include="Views\Ordini\Details.cshtml" />
     <Content Include="Views\Ordini\Edit.cshtml" />
     <Content Include="Views\Ordini\Index.cshtml" />
-    <Content Include="Views\Utentis\Create.cshtml" />
-    <Content Include="Views\Utentis\Delete.cshtml" />
-    <Content Include="Views\Utentis\Details.cshtml" />
-    <Content Include="Views\Utentis\Edit.cshtml" />
-    <Content Include="Views\Utentis\Index.cshtml" />
-    <Content Include="Views\Menù\Index.cshtml" />
-    <Content Include="Views\Carrello\Index.cshtml" />
-    <Content Include="Views\Carrello\DatiPersonali.cshtml" />
+    <Content Include="Views\Home\Storia.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -256,6 +273,14 @@
     <Content Include="Scripts\bootstrap.bundle.js.map" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202403151324362_Initial.resx">
+      <DependentUpon>202403151324362_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202403151325264_NuovaColonnaDataInOrdini.resx">
+      <DependentUpon>202403151325264_NuovaColonnaDataInOrdini.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

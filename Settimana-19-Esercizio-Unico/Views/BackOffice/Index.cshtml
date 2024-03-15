@@ -2,17 +2,40 @@
 @{
     ViewBag.Title = "Index";
 }
+<div class="row">
+    <div class="col-6">
 
-<h3 class="display-6">BackOffice</h3>
+        <h3 class="display-5 ps-5 my-4">BackOffice</h3>
 
-<div class="row mt-5">
-    <div class="col-3">
-        @Html.ActionLink("Articoli", "Index", "Articoli", new {area = ""}, new {@class = "btn btn-primary"})
+        <hr />
+        <div class="my-5">
+            @Html.ActionLink("Articoli", "Index", "Articoli", new { area = "" }, new { @class = "btn btn-primary mx-2" })
+
+            @Html.ActionLink("Ordini", "Index", "Ordini", new { area = "" }, new { @class = "btn btn-primary mx-2" })
+
+            @Html.ActionLink("Utenti", "Index", "Utenti", new { area = "" }, new { @class = "btn btn-primary mx-2" })
+        </div>
+
+        <form method="post" action="@Url.Action("NumeroOrdiniEvasi", "BackOffice")">
+            <label for="datetime" class="control-label">Data:</label>
+            <input type="date" name="dateTime" class="w-25 mb-3 form-control" />
+            <input type="submit" value="Calcola" class="btn btn-outline-success" />
+        </form>
+
+        @if (TempData.ContainsKey("NumeroOrdiniEvasi"))
+        {
+            <h3 class="fs-4 fw-light">Informazioni per la data: @TempData["Data"]</h3>
+            <h3 class="fs-4 fw-light">Numero Ordini Evasi:</h3>
+            <p class="fs-3">@TempData["NumeroOrdiniEvasi"]</p>
+            <h3 class="fs-4 fw-light">Totale Incasso:</h3>
+            <p class="fs-3">@Convert.ToDouble(TempData["TotaleIncasso"])</p>
+        }
+
+
     </div>
-    <div class="col-3">
-        @Html.ActionLink("Ordini", "Index", "Ordini", new { area = "" }, new { @class = "btn btn-primary" })
-    </div>
-    <div class="col-3">
-        @Html.ActionLink("Utenti", "Index", "Utentis", new { area = "" }, new { @class = "btn btn-primary" })
+    <div class="col-4">
+        <div class="rounded-5 overflow-hidden mx-auto">
+            <img class="img-fluid" alt="logo pizzeria in forno" src="~/ImmaginiProdotti/Pizzeria_Logo.png" />
+        </div>
     </div>
 </div>

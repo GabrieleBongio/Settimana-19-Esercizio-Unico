@@ -67,7 +67,13 @@ namespace Settimana_19_Esercizio_Unico.Controllers
         public ActionResult Logout()
         {
             FormsAuthentication.SignOut();
+            TempData["Carrello"] = new List<ElementoCarrello>();
             return RedirectToAction("Index");
+        }
+
+        public ActionResult Storia()
+        {
+            return View();
         }
     }
 }

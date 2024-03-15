@@ -3,7 +3,7 @@
     ViewBag.Title = "Index";
 }
 
-<h3 class="display-5">Menù</h3>
+<h3 class="display-5 ps-5 my-4">I nostri prodotti</h3>
 
 @if (TempData.ContainsKey("Info"))
 {
@@ -18,17 +18,17 @@
     </div>
 }
 
-<div>
+<div class="px-3">
     @foreach (Settimana_19_Esercizio_Unico.Models.Articoli a in Model)
     {
-        <div class="row align-items-center rounded-4 border mt-2 p-4">
+        <div class="row align-items-center rounded-4 border mt-2 p-4 background_div_menù">
             <div class="col-2">
-                <img class="img-fluid" src="~/ImmaginiProdotti/@a.Foto" alt="Immagine prodotto" />
+                <img class="img-fluid rounded-3" src="~/ImmaginiProdotti/@a.Foto" alt="Immagine prodotto" />
             </div>
             <div class="col-6">
-                <p class="fs-3 fw-light">@a.Nome</p>
+                <p class="fs-2 fw-light mb-1">@a.Nome</p>
                 <p>@a.Ingredienti</p>
-                <p class="text-end fs-5 fw-lighter">@Convert.ToDouble(a.Prezzo) €</p>
+                <p class="text-end fs-3 fw-lighter">@Convert.ToDouble(a.Prezzo) €</p>
             </div>
             @if (User.Identity.IsAuthenticated)
             {

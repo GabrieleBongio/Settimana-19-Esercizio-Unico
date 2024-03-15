@@ -4,10 +4,10 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h3 class="fs-2 fw-lighter">Lista Prodotti</h3>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Crea Nuovo", "Create", "Articoli", new { area = "" }, new {@class = "btn btn-outline-primary"})
 </p>
 <table class="table">
     <tr>
@@ -34,8 +34,8 @@
         <td>
             @Html.DisplayFor(modelItem => item.Nome)
         </td>
-        <td>
-            <img class="w-25" alt="immagine Prodotto" src="~/ImmaginiProdotti/@item.Foto" /> 
+        <td style="width: 10%">
+            <img class="img-fluid" alt="immagine_prodotto" src="~/ImmaginiProdotti/@item.Foto"/>
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Prezzo)
@@ -47,9 +47,9 @@
             @Html.DisplayFor(modelItem => item.Ingredienti)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IdArticolo }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IdArticolo }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IdArticolo })
+            @Html.ActionLink("Modifica", "Edit", "Articoli", new { id = item.IdArticolo }, new { @class = "btn btn-warning" })
+            @Html.ActionLink("Dettagli", "Details", "Articoli", new { id = item.IdArticolo }, new { @class = "btn btn-primary" })
+            @Html.ActionLink("Elimina", "Delete", "Articoli", new { id = item.IdArticolo }, new { @class = "btn btn-danger" })
         </td>
     </tr>
 }

@@ -48,7 +48,8 @@ namespace Settimana_19_Esercizio_Unico.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(
-            [Bind(Include = "Nome,Foto,Prezzo,TempoConsegna,Ingredienti")] Articoli articoli
+            [Bind(Include = "IdArticolo,Nome,Foto,Prezzo,TempoConsegna,Ingredienti")]
+                Articoli articoli
         )
         {
             if (ModelState.IsValid)
@@ -82,7 +83,8 @@ namespace Settimana_19_Esercizio_Unico.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(
-            [Bind(Include = "Nome,Foto,Prezzo,TempoConsegna,Ingredienti")] Articoli articoli
+            [Bind(Include = "IdArticolo,Nome,Foto,Prezzo,TempoConsegna,Ingredienti")]
+                Articoli articoli
         )
         {
             if (ModelState.IsValid)

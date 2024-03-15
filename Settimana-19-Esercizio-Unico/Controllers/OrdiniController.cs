@@ -38,31 +38,9 @@ namespace Settimana_19_Esercizio_Unico.Controllers
         }
 
         // GET: Ordini/Create
-        public ActionResult Create()
-        {
-            ViewBag.IdUtente = new SelectList(db.Utenti, "IdUtente", "Username");
-            return View();
-        }
-
-        // POST: Ordini/Create
-        // Per la protezione da attacchi di overposting, abilitare le proprietà a cui eseguire il binding.
-        // Per altri dettagli, vedere https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(
-            [Bind(Include = "IdUtente,Importo,Indirizzo,NoteUtili,Evaso")] Ordini ordini
-        )
-        {
-            if (ModelState.IsValid)
-            {
-                db.Ordini.Add(ordini);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            ViewBag.IdUtente = new SelectList(db.Utenti, "IdUtente", "Username", ordini.IdUtente);
-            return View(ordini);
-        }
+        /*
+            Inutile ai fini del progetto, quindi eliminato
+         */
 
         // GET: Ordini/Edit/5
         public ActionResult Edit(int? id)
@@ -86,7 +64,8 @@ namespace Settimana_19_Esercizio_Unico.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(
-            [Bind(Include = "IdUtente,Importo,Indirizzo,NoteUtili,Evaso")] Ordini ordini
+            [Bind(Include = "IdOrdine,IdUtente,Importo,Indirizzo,NoteUtili,Data,Evaso")]
+                Ordini ordini
         )
         {
             if (ModelState.IsValid)
@@ -132,6 +111,15 @@ namespace Settimana_19_Esercizio_Unico.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public ActionResult EvadiOrdine(int id)
+        {
+            Ordini ordine = db.Ordini.Find(id);
+            ordine.Evaso = true;
+            db.Entry(ordine).State = EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }

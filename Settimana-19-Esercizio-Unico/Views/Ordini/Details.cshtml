@@ -4,55 +4,73 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<div class="row">
+    <div class="col-6">
 
-<div>
-    <h4>Ordini</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Utenti.Username)
-        </dt>
+        <h3 class="display-6">Dettagli Ordine:</h3>
 
-        <dd>
-            @Html.DisplayFor(model => model.Utenti.Username)
-        </dd>
+        <div>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Utenti.Username)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Importo)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Utenti.Username)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Importo)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Importo)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Indirizzo)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Importo)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Indirizzo)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Indirizzo)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.NoteUtili)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Indirizzo)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.NoteUtili)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.NoteUtili)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Evaso)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.NoteUtili)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Evaso)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Data)
+                </dt>
 
-    </dl>
+                <dd>
+                    @Html.DisplayFor(model => model.Data)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Evaso)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Evaso)
+                </dd>
+
+            </dl>
+        </div>
+        <p>
+            @Html.ActionLink("Modifica", "Edit", "Ordini", new { id = Model.IdOrdine }, new { @class = "btn btn-warning" })
+            @Html.ActionLink("Ritorna alla lista", "Index", "Ordini", new { area = "" }, new { @class = "btn btn-outline-primary" })
+        </p>
+
+    </div>
+    <div class="col-4">
+        <div class="rounded-5 overflow-hidden mx-auto">
+            <img class="img-fluid" alt="logo pizzeria in forno" src="~/ImmaginiProdotti/Pizzeria_Logo.png" />
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.IdOrdine }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

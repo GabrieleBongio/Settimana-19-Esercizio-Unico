@@ -151,6 +151,7 @@ namespace Settimana_19_Esercizio_Unico.Controllers
             nuovoOrdine.Importo = importo;
             nuovoOrdine.Indirizzo = indirizzo;
             nuovoOrdine.NoteUtili = noteUtili;
+            nuovoOrdine.Data = DateTime.Now;
 
             dbContext.Ordini.Add(nuovoOrdine);
             dbContext.SaveChanges();
@@ -168,7 +169,7 @@ namespace Settimana_19_Esercizio_Unico.Controllers
             }
             dbContext.SaveChanges();
 
-            TempData["Info"] = "Ordine effettuato con successo";
+            TempData["Info"] = "Ordine effettuato con successo, grazie per averci scelto";
             return RedirectToAction("Index", "Home");
         }
     }

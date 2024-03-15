@@ -2,18 +2,39 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="bg-primary bg-opacity-10 border p-5 rounded-5 w-75 my-5 mx-auto">
-    <h1 class="display-3">Benvenuti alla pizzeria "In Forno"</h1>
-    <p class="fs-4 fw-lighter border-top border-2 mt-4 pt-3">inforniamo pizze dal 1952</p>
-</div>
-
-<div class="text-center">
-    @Html.ActionLink("Vai al Menù", "Index", "Menù", new { area = "" }, new { @class = "btn btn-primary fs-4 rounded-pill py-3 px-5" })
-</div>
-
-@if (User.IsInRole("Admin"))
-{
-    <div class="text-center mt-4">
-        @Html.ActionLink("Vai al BackOffice", "Index", "BackOffice", new { area = "" }, new { @class = "btn btn-primary fs-4 rounded-pill py-3 px-5" })
+<div class="row my-5 mx-4 g-3 align-items-center">
+    <div class="col-4">
+        <div class="w-75 mx-auto rounded-5 overflow-hidden background_div_home p-3" id="storia">
+            <p class="display-6 text-center m-0">La nostra</p>
+            <p class="display-6 text-center">Storia</p>
+            <img class="img-fluid rounded-4" alt="sfondo storia" src="~/ImmaginiProdotti/Pizzeria_Storia.jpg" />
+        </div>
     </div>
+    <div class="col-4">
+        <div class="rounded-5 overflow-hidden mx-auto">
+            <img class="img-fluid" alt="logo pizzeria in forno" src="~/ImmaginiProdotti/Pizzeria_Logo.png" />
+        </div>
+    </div>
+    <div class="col-4">
+        <div class="w-75 mx-auto rounded-5 overflow-hidden background_div_home p-3" id="menù">
+            <p class="display-6 text-center m-0">I nostri</p>
+            <p class="display-6 text-center">Prodotti</p>
+            <img class="img-fluid rounded-4" alt="sfondo prodotti" src="~/ImmaginiProdotti/Pizza_Burrata.jpeg" />
+        </div>
+    </div>
+</div>
+
+@if (TempData.ContainsKey("Info"))
+{
+    <div class="w-75 mx-auto alert alert-personalized rounded-4 fs-4 fw-lighter text-center">@TempData["Info"]</div>
 }
+
+<script>
+    document.getElementById("storia").onclick = function () {
+        window.location.href = '@Url.Action("Storia", "Home")'; // Modifica con i tuoi valori
+    };
+
+    document.getElementById("menù").onclick = function () {
+        window.location.href = '@Url.Action("Index", "Menù")'; // Modifica con i tuoi valori
+    };
+</script>

@@ -8,7 +8,7 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
-<body>
+<body class="background_principale">
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
         <div class="container">
             @Html.ActionLink("Pizzeria 'In Forno'", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
@@ -39,12 +39,12 @@
             </div>
         </div>
     </nav>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Applicazione ASP.NET</p>
-        </footer>
+    <div class="container body-content main_container mb-5">
+            @RenderBody()
+            <hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - Pizzeria "In Forno"</p>
+            </footer>
     </div>
 
     @Scripts.Render("~/bundles/jquery")

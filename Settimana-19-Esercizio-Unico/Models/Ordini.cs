@@ -9,7 +9,10 @@ namespace Settimana_19_Esercizio_Unico.Models
     [Table("Ordini")]
     public partial class Ordini
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage(
+            "Microsoft.Usage",
+            "CA2214:DoNotCallOverridableMethodsInConstructors"
+        )]
         public Ordini()
         {
             Dettagli_Ordini = new HashSet<Dettagli_Ordini>();
@@ -29,9 +32,15 @@ namespace Settimana_19_Esercizio_Unico.Models
 
         public string NoteUtili { get; set; }
 
+        [DataType(DataType.Date)]
+        public DateTime Data { get; set; }
+
         public bool Evaso { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage(
+            "Microsoft.Usage",
+            "CA2227:CollectionPropertiesShouldBeReadOnly"
+        )]
         public virtual ICollection<Dettagli_Ordini> Dettagli_Ordini { get; set; }
 
         public virtual Utenti Utenti { get; set; }

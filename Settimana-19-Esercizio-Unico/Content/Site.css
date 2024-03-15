@@ -18,3 +18,39 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.background_principale {
+    background-image: url("/ImmaginiProdotti/Sfondo_Pizzeria.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.main_container {
+    padding: 20px;
+    border-radius: 20px;
+    background-color: #CCCCACE0;
+}
+
+.background_div_home {
+    background-color: #FFFFDD;
+    border: 1px solid #DDDDBB;
+    transition: all linear 0.2s;
+    cursor:pointer;
+}
+
+.background_div_home:hover {
+    transform: scale(1.2);
+}
+
+.background_div_menù {
+    background-color: #FFFFDD;
+    border: 1px solid #DDDDBB;
+}
+
+.alert-personalized {
+    color: #9B731F;
+    background-color: #FFF9BADD;
+    border-color: #E6D67D;
+}

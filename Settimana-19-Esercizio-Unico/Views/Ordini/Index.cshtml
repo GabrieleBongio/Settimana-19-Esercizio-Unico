@@ -4,11 +4,9 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h3 class="fs-2 fw-lighter">Lista Ordini</h3>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+
 <table class="table">
     <tr>
         <th>
@@ -24,34 +22,44 @@
             @Html.DisplayNameFor(model => model.NoteUtili)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.Data)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Evaso)
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Utenti.Username)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Importo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Indirizzo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NoteUtili)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Evaso)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IdOrdine }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IdOrdine }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IdOrdine })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Utenti.Username)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Importo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Indirizzo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NoteUtili)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Data)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Evaso)
+            </td>
+            <td>
+                @if (!item.Evaso)
+                {
+                    @Html.ActionLink("Evadi Ordine", "EvadiOrdine", "Ordini", new { id = item.IdOrdine }, new { @class = "btn btn-warning" })
+                }
+                @Html.ActionLink("Dettagli", "Details", "Ordini", new { id = item.IdOrdine }, new { @class = "btn btn-primary" })
+                @Html.ActionLink("Elimina", "Delete", "Ordini", new { id = item.IdOrdine }, new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+    }
 
 </table>

@@ -3,22 +3,32 @@
     ViewBag.Title = "DatiPersonali";
 }
 
-<h3>Conferma Ordine</h3>
+<div class="row">
+    <div class="col-6">
+        <h3 class="display-5">Conferma Ordine</h3>
 
-<p>Inserisci i tuoi dati per confermare l'ordine</p>
+        <p class="fs-5 fw-light">Inserisci i tuoi dati per confermare l'ordine</p>
 
-<form method="post" action="@Url.Action("ConfermaOrdine", "Carrello")">
-    <div class="form-group">
-        <label class="control-label col-md-2" for="indirizzo">Indirizzo:</label>
-        <div class="col-md-10">
-            <input name="indirizzo" class="form-control" />
+        <form method="post" action="@Url.Action("ConfermaOrdine", "Carrello")">
+            <div class="form-group">
+                <label class="control-label col-md-2" for="indirizzo">Indirizzo:</label>
+                <div class="col-md-10">
+                    <input name="indirizzo" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-2" for="noteUtili">Note Utili:</label>
+                <div class="col-md-10">
+                    <input name="noteUtili" class="form-control" />
+                </div>
+            </div>
+            <input type="submit" value="Conferma ordine" class="btn btn-success my-3" />
+        </form>
+
+    </div>
+    <div class="col-4">
+        <div class="rounded-5 overflow-hidden mx-auto">
+            <img class="img-fluid" alt="logo pizzeria in forno" src="~/ImmaginiProdotti/Pizzeria_Logo.png" />
         </div>
     </div>
-    <div class="form-group">
-        <label class="control-label col-md-2" for="noteUtili">Note Utili:</label>
-        <div class="col-md-10">
-            <input name="noteUtili" class="form-control"/>
-        </div>
-    </div>
-    <input type="submit" value="Conferma ordine" class="btn btn-success"/>
-</form>
+</div>

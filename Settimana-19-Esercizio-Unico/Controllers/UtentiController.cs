@@ -11,17 +11,17 @@ using Settimana_19_Esercizio_Unico.Models;
 namespace Settimana_19_Esercizio_Unico.Controllers
 {
     [Authorize(Roles = "Admin")]
-    public class UtentisController : Controller
+    public class UtentiController : Controller
     {
         private ModelDbContext db = new ModelDbContext();
 
-        // GET: Utentis
+        // GET: Utenti
         public ActionResult Index()
         {
             return View(db.Utenti.ToList());
         }
 
-        // GET: Utentis/Details/5
+        // GET: Utenti/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -36,18 +36,20 @@ namespace Settimana_19_Esercizio_Unico.Controllers
             return View(utenti);
         }
 
-        // GET: Utentis/Create
+        // GET: Utenti/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Utentis/Create
+        // POST: Utenti/Create
         // Per la protezione da attacchi di overposting, abilitare le proprietà a cui eseguire il binding.
         // Per altri dettagli, vedere https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Username,Password,Admin")] Utenti utenti)
+        public ActionResult Create(
+            [Bind(Include = "IdUtente,Username,Password,Admin")] Utenti utenti
+        )
         {
             if (ModelState.IsValid)
             {
@@ -59,7 +61,7 @@ namespace Settimana_19_Esercizio_Unico.Controllers
             return View(utenti);
         }
 
-        // GET: Utentis/Edit/5
+        // GET: Utenti/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -74,12 +76,12 @@ namespace Settimana_19_Esercizio_Unico.Controllers
             return View(utenti);
         }
 
-        // POST: Utentis/Edit/5
+        // POST: Utenti/Edit/5
         // Per la protezione da attacchi di overposting, abilitare le proprietà a cui eseguire il binding.
         // Per altri dettagli, vedere https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Username,Password,Admin")] Utenti utenti)
+        public ActionResult Edit([Bind(Include = "IdUtente,Username,Password,Admin")] Utenti utenti)
         {
             if (ModelState.IsValid)
             {
@@ -90,7 +92,7 @@ namespace Settimana_19_Esercizio_Unico.Controllers
             return View(utenti);
         }
 
-        // GET: Utentis/Delete/5
+        // GET: Utenti/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -105,7 +107,7 @@ namespace Settimana_19_Esercizio_Unico.Controllers
             return View(utenti);
         }
 
-        // POST: Utentis/Delete/5
+        // POST: Utenti/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

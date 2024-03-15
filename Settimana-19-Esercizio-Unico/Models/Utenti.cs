@@ -36,7 +36,7 @@ namespace Settimana_19_Esercizio_Unico.Models
         [DataType(DataType.Password)]
         public string Password { get; set; }
 
-        [ScaffoldColumn(false)]
+        [Required]
         public bool Admin { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage(
